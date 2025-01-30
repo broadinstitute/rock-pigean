@@ -6,9 +6,10 @@ image="${name}:${tag}"
 echo "Using Google project ${project}, Docker project ${name}, image tag ${image}"
 echo "Cloud-building Docker image:"
 full="gcr.io/${project}/${image}"
-gcloud builds submit --timeout=60m --tag $full
+sudo docker rmi $full --force
+gcloud builds submit --timeout=60m --project ${project} --tag $full
 arg1=$1
 if [ -n "$arg1" ];then
-  docker run -it $full "$arg1"
+  sudo docker run -it $full "$arg1"
 fi
 echo "Done with $full $arg1"
