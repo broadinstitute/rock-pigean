@@ -1,5 +1,6 @@
 FROM ubuntu:plucky
 RUN apt -y update && apt -y upgrade && apt -y install python3 python3-scipy
+WORKDIR /app
 ADD data/gene_set_list_mouse_2024.txt data/
 ADD data/gene_set_list_msigdb_nohp.txt data/
 ADD data/portal_gencode.gene.map  data/
