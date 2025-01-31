@@ -21,7 +21,7 @@ task run_grep_genes {
         docker: "ubuntu:latest"
     }
     command <<<
-        for gene in $(cat git/rock-pigean/ex/gene_list); do
+        for gene in $(cat ~{gene_list}); do
             { echo -n \"gene\": \"; echo -n "${gene}" | tr -d [:cntrl:]; echo \"; } >> patterns;
         done
         grep -f patterns ~{data} > ~{output_file_name}
