@@ -9,6 +9,9 @@ workflow grep_genes {
     call run_grep_genes {
         input: gene_list=gene_list, data=data, output_file_name=output_file_name
     }
+    output {
+        File output_file = run_grep_genes.output_file
+    }
 }
 
 task run_grep_genes {

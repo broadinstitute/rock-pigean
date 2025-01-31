@@ -8,6 +8,12 @@ workflow rock_pigean {
     call run_pigean {
         input: gene_list=gene_list, output_files_base_name=output_files_base_name
     }
+    output {
+        File gs = run_pigean.gs
+        File gss = run_pigean.gss
+        File ggss = run_pigean.ggss
+        File params = run_pigean.params
+    }
 }
 
 task run_pigean {
